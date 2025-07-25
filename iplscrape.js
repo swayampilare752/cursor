@@ -4,15 +4,20 @@ const fs = require('fs');
 
 const seasons = [2021, 2022, 2023, 2024, 2025];
 const categories = [
-  "Orange Cap", // Top run scorers
-  "Most Fours",
-  "Most Sixes",
+  "Orange Cap",
+  "Most Fours (Innings)",
+  "Most Sixes (Innings)",
   "Most Centuries",
   "Most Fifties"
 ];
 
 (async () => {
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await puppeteer.launch({
+    headless: 'new',
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    executablePath: puppeteer.executablePath(),
+  });
+
   const page = await browser.newPage();
   const workbook = xlsx.utils.book_new();
 
@@ -63,12 +68,10 @@ const categories = [
     }
   }
 
-  // Write XLSX file
   const excelPath = 'IPL_Top10_Stats_2021-25.xlsx';
   xlsx.writeFile(workbook, excelPath);
   console.log('🎯 Saved Excel:', excelPath);
 
-  // Convert XLSX to JSON
   const readWorkbook = xlsx.readFile(excelPath);
   const result = {};
   for (const sheetName of readWorkbook.SheetNames) {
