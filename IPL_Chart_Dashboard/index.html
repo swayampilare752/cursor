@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IPL Chart Dashboard</title>
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      background: #f7f9fa;
+      margin: 0;
+      padding: 0;
+      color: #222;
+    }
+    header {
+      background: #1e293b;
+      color: #fff;
+      padding: 2rem 1rem 1rem 1rem;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(30,41,59,0.08);
+    }
+    .dashboard-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(30,41,59,0.08);
+      padding: 2rem;
+    }
+    .filters {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      align-items: center;
+    }
+    .filters label {
+      font-weight: 700;
+      margin-right: 0.5rem;
+    }
+    .chart-section {
+      margin-bottom: 2rem;
+    }
+    #chart-explanation {
+      background: #f1f5f9;
+      border-radius: 8px;
+      padding: 1rem;
+      font-size: 1rem;
+      color: #334155;
+    }
+    @media (max-width: 600px) {
+      .dashboard-container {
+        padding: 1rem;
+      }
+      .filters {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>IPL Chart Dashboard</h1>
+    <p>Interactive Visualizations of IPL Stats</p>
+  </header>
+  <div class="dashboard-container">
+    <div class="filters">
+      <label for="season-select">Season:</label>
+      <select id="season-select"></select>
+      <label for="category-select">Category:</label>
+      <select id="category-select">
+        <option value="OrangeCap">Orange Cap</option>
+        <option value="MostFoursInnings">Most Fours (Innings)</option>
+        <option value="MostSixesInnings">Most Sixes (Innings)</option>
+        <option value="MostFifties">Most Fifties</option>
+        <option value="MostCenturies">Most Centuries</option>
+      </select>
+      <label for="chart-type-select">Chart Type:</label>
+      <select id="chart-type-select">
+        <option value="bar">Bar</option>
+        <option value="pie">Pie</option>
+        <option value="doughnut">Doughnut</option>
+        <option value="line">Line</option>
+        <option value="radar">Radar</option>
+      </select>
+      <!-- Future: Add team/player filters here -->
+    </div>
+    <div class="chart-section">
+      <canvas id="ipl-chart" height="350"></canvas>
+    </div>
+    <div id="chart-explanation">
+      <!-- Chart explanations will appear here -->
+    </div>
+  </div>
+  <script src="chart.js"></script>
+</body>
+</html>

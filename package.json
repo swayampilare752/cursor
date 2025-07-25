@@ -1,0 +1,17 @@
+{
+  "name": "cursor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "orangecap.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node iplscrape.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^24.15.0",
+    "xlsx": "^0.18.5"
+  }
+}
