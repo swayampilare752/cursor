@@ -12,7 +12,7 @@ const categories = [
 ];
 
 (async () => {
-  const browser = await puppeteer.launch({ headless: false });
+  const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
   const workbook = xlsx.utils.book_new();
 
